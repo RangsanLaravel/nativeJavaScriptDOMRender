@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="target"></table>
+</body>
+<script>
+    function makeTable() {
+    var fragment = document.createDocumentFragment();
+
+    for (var i = 0; i < 10000; i++) {
+        var row = document.createElement('tr');
+        fragment.appendChild(row);
+
+        for (var j = 0; j < 20; j++) {
+            var cell = document.createElement('td');
+            cell.appendChild(document.createTextNode(i.toString() + ', ' + j.toString()));
+            row.appendChild(cell);
+        }
+    }
+    
+    var target = document.getElementById('target');
+    target.appendChild(fragment);
+}
+
+makeTable();
+</script>
+</html>
